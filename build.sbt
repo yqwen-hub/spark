@@ -27,4 +27,3 @@ javaOptions ++= Seq(
   "--add-exports", "java.base/sun.nio.ch=ALL-UNNAMED"
 )
 
-classLoaderLayeringStrategy in run := ClassLoaderLayeringStrategy.Flat

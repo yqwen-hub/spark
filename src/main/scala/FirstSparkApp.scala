@@ -4,7 +4,7 @@ import OBJ.{bar, experimentFun}
 import org.apache.spark.sql.functions.{col, lit, sum}
 
 
-object FirstSparkApp {
+object  FirstSparkApp {
   def main(args: Array[String]): Unit = {
 
     // Initialize SparkSession
@@ -31,6 +31,15 @@ object FirstSparkApp {
 
     // Show the DataFrame
     df.show()
+
+    val filtered_1 = data.filter(
+      e => e._3 == "F"
+    )
+
+    val dfFiltered: DataFrame = spark.createDataFrame(filtered_1).toDF("FirstName", "LastName", "Sex", "cohort", "Age")
+
+    // Show the DataFrame
+    dfFiltered.show()
 
     val inputFields: Seq[StructField] = Seq(
       StructField("FirstName", StringType),
